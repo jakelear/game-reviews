@@ -3,7 +3,7 @@ import GameList from "../GameList";
 import styles from "./GameSearch.module.scss";
 
 function GameSearch() {
-  const [filter, setFilter] = useState("skyrim");
+  const [filter, setFilter] = useState("");
 
   return (
     <Fragment>

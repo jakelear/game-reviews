@@ -4,10 +4,16 @@ import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { useParams } from "react-router-dom";
 
+import ReviewsPanel from "../ReviewsPanel";
+import styles from "./GamePage.module.scss";
+
 const GAME = gql`
   query Game($id: ID!) {
     game(id: $id) {
       bannerScreenshot {
+        fullRes
+      }
+      mastheadScreenshot {
         fullRes
       }
       id
@@ -50,7 +56,27 @@ function GamePage(props) {
   if (results.loading) return <p>Loading...</p>;
   if (results.error) return <p>Error :(</p>;
 
-  return <p>{results.data.game.name}</p>;
+  const { name, id, mastheadScreenshot, Companies } = results.data.game;
+  return (
+    <div>
+      {mastheadScreenshot && (
+        <img
+          className={styles.masthead}
+          src={mastheadScreenshot.fullRes}
+          alt={`Key art for ${name}`}
+        />
+      )}
+      <h1>{name}</h1>
+      <p>
+        {Companies.map((company, index) => {
+          return `${company.name} ${
+            index !== Companies.length - 1 ? "| " : ""
+          }`;
+        })}
+      </p>
+      <ReviewsPanel id={id} />
+    </div>
+  );
 }
 
 export default withRouter(GamePage);
