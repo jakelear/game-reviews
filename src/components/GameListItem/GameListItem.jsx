@@ -4,18 +4,32 @@ import { withRouter } from "react-router";
 import styles from "./GameListItem.module.scss";
 
 function GameListItem(props) {
-  const { id, name, bannerScreenshot } = props.game;
+  const { id, name, bannerScreenshot, Companies } = props.game;
 
   return (
     <li className={styles.wrapper}>
-      <Link to={`/game/${id}`}>
+      <Link
+        to={{
+          pathname: `/game/${id}`,
+          game: props.game
+        }}
+      >
         <div className={styles.imgWrap}>
           <img
             src={bannerScreenshot.fullRes}
             alt={`Logo key art for ${name}`}
           />
         </div>
-        <h1>{name}</h1>
+        <div className={styles.meta}>
+          <h1 className={styles.gameTitle}>{name}</h1>
+          <p className={styles.companies}>
+            {Companies.map((company, index) => {
+              return `${company.name} ${
+                index !== Companies.length - 1 ? "| " : ""
+              }`;
+            })}
+          </p>
+        </div>
       </Link>
     </li>
   );

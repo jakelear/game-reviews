@@ -1,6 +1,9 @@
 .list {
-  display: flex;
-  width: 100vw;
-  flex-wrap: wrap;
+  align-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  justify-content: space-between;
   list-style: none;
+  grid-column-gap: 20px;
+  width: 100%;
 }

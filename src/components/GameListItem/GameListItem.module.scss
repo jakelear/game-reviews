@@ -1,5 +1,7 @@
 .wrapper {
   font-size: 12px;
+  margin: 30px 0;
+  width: 300px;
   &:hover {
     .imgWrap::after {
       opacity: 0.25;
@@ -36,4 +38,12 @@
   a {
     text-decoration: none;
   }
+}
+
+.companies {
+  opacity: 0.7;
+}
+
+.meta {
+  margin: 10px 0 0;
 }

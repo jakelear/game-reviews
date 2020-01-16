@@ -1,7 +1,10 @@
 * {
-  background: #333;
   box-sizing: border-box;
   color: #fff;
   padding: 0;
   margin: 0;
+}
+
+html {
+  background: #121212;
 }

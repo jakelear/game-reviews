@@ -3,7 +3,8 @@ import { render } from "react-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 import GameSearch from "./components/GameSearch";
-import { BrowserRouter } from "react-router-dom";
+import GamePage from "./components/GamePage";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 import styles from "./app.scss";
 
@@ -15,7 +16,10 @@ const App = () => (
   <BrowserRouter>
     <ApolloProvider client={client}>
       <div className={styles.app}>
-        <GameSearch />
+        <Switch>
+          <Route exact path="/" component={GameSearch} />
+          <Route exact path="/game/:id" component={GamePage} />
+        </Switch>
       </div>
     </ApolloProvider>
   </BrowserRouter>

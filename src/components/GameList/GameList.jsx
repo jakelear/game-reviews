@@ -10,8 +10,15 @@ const GAMES = gql`
       bannerScreenshot {
         fullRes
       }
+      mastheadScreenshot {
+        fullRes
+      }
       id
       name
+      Companies {
+        name
+        type
+      }
     }
   }
 `;
