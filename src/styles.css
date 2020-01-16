@@ -1,4 +1,7 @@
 * {
+  background: #333;
   box-sizing: border-box;
-  color: #333;
+  color: #fff;
+  padding: 0;
+  margin: 0;
 }
