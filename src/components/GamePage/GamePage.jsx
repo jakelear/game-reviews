@@ -16,6 +16,7 @@ const GAME = gql`
       mastheadScreenshot {
         fullRes
       }
+      percentRecommended
       id
       name
       Companies {
@@ -27,7 +28,7 @@ const GAME = gql`
 `;
 
 function getGame(props) {
-  /* We queried game for the list, so only query for game on direct navigation */
+  // We queried game for the list so we can use passed props if the user clicks through
   if (props.location.game) {
     return {
       error: false,
@@ -51,12 +52,18 @@ function getGame(props) {
 }
 
 function GamePage(props) {
-  const results = getGame(props);
+  const game = getGame(props);
 
-  if (results.loading) return <p>Loading...</p>;
-  if (results.error) return <p>Error :(</p>;
+  if (game.loading) return <p>Loading...</p>;
+  if (game.error) return <p>Error :(</p>;
 
-  const { name, id, mastheadScreenshot, Companies } = results.data.game;
+  const {
+    name,
+    id,
+    mastheadScreenshot,
+    percentRecommended,
+    Companies
+  } = game.data.game;
   return (
     <div>
       {mastheadScreenshot && (
@@ -74,7 +81,7 @@ function GamePage(props) {
           }`;
         })}
       </p>
-      <ReviewsPanel id={id} />
+      <ReviewsPanel id={id} percentRecommended={percentRecommended} />
     </div>
   );
 }

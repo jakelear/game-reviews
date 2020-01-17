@@ -1,0 +1,23 @@
+.percentIndicator {
+  display: flex;
+  align-items: center;
+  margin: 40px 0;
+}
+.percentBadge {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+
+.percentage {
+  position: absolute;
+  height: 26px;
+  top: calc(50% - 13px);
+  left: calc(50% - 25px);
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.criticCount {
+  margin: 0 0 0 20px;
+}

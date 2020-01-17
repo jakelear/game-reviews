@@ -13,6 +13,7 @@ const gameFields = `
   }
   id
   name
+  percentRecommended
   Companies {
     name
     type

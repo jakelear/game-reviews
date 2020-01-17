@@ -1,3 +1,10 @@
 .masthead {
   width: 100%;
 }
+
+svg {
+  transform: rotate(-90deg);
+}
+circle {
+  fill: none;
+}
