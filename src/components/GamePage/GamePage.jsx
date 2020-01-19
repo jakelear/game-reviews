@@ -5,7 +5,6 @@ import { gql } from "apollo-boost";
 import { useParams } from "react-router-dom";
 import GAMEQUERY from "../../shared/gamefields";
 import ReviewsPanel from "../ReviewsPanel";
-import styles from "./GamePage.module.scss";
 
 const GAME = gql`
   query Game($id: ID!) {
@@ -45,16 +44,9 @@ function GamePage(props) {
   if (game.loading) return <p>Loading...</p>;
   if (game.error) return <p>Error :(</p>;
 
-  const { name, mastheadScreenshot, Companies } = game.data.game;
+  const { name, Companies } = game.data.game;
   return (
     <div>
-      {mastheadScreenshot && (
-        <img
-          className={styles.masthead}
-          src={mastheadScreenshot.fullRes}
-          alt={`Key art for ${name}`}
-        />
-      )}
       <h1>{name}</h1>
       <p>
         {Companies.map((company, index) => {
