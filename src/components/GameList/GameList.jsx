@@ -2,28 +2,13 @@ import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import GameListItem from "../GameListItem";
+import GAMEQUERY from "../../shared/gamefields";
 import styles from "./GameList.module.scss";
-
-const gameFields = `
-  bannerScreenshot {
-    fullRes
-  }
-  mastheadScreenshot {
-    fullRes
-  }
-  id
-  name
-  percentRecommended
-  Companies {
-    name
-    type
-  }
-`;
 
 const SEARCH = gql`
   query Games($filter: String!) {
     games(filter: $filter) {
-      ${gameFields}
+      ${GAMEQUERY}
     }
   }
 `;
@@ -31,7 +16,7 @@ const SEARCH = gql`
 const HALL_OF_FAME = gql`
   query halloffame {
     halloffame {
-      ${gameFields}
+      ${GAMEQUERY}
     }
   }
 `;

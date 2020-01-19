@@ -1,50 +1,36 @@
 import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
-
+import RadialPercentage from "../RadialPercentage";
+import ReviewCard from "../ReviewCard";
 import styles from "./ReviewsPanel.module.scss";
-
-const RADIUS = 54;
-const DASH_ARRAY = 2 * Math.PI * RADIUS;
-
-function calculateDashOffset(percent) {
-  return DASH_ARRAY * (1.0 - percent);
-}
 
 const REVIEWS = gql`
   query Reviews($id: ID!) {
     reviews(id: $id) {
       _id
       snippet
+      externalUrl
+      npScore
+      score
+      ScoreFormat {
+        base
+        id
+        isNumeric
+        isStars
+        name
+        scoreDisplay
+        shortName
+      }
+      Authors {
+        name
+      }
+      Outlet {
+        name
+      }
     }
   }
 `;
-
-function RadialPercentage(props) {
-  const { percentRecommended } = props;
-  return (
-    <svg width="120" height="120" viewBox="0 0 120 120">
-      <circle
-        cx="60"
-        cy="60"
-        r="54"
-        fill="none"
-        stroke="#333333"
-        strokeWidth="6"
-      />
-      <circle
-        cx="60"
-        cy="60"
-        r="54"
-        fill="none"
-        stroke="#f8cb46"
-        strokeWidth="6"
-        strokeDasharray={DASH_ARRAY}
-        strokeDashoffset={calculateDashOffset(percentRecommended / 100)}
-      />
-    </svg>
-  );
-}
 
 function ReviewsPanel(props) {
   const { id, percentRecommended } = props;
@@ -64,9 +50,9 @@ function ReviewsPanel(props) {
           of {data.reviews.length} critics recommend
         </p>
       </div>
-      <ul>
+      <ul className={styles.reviewCards}>
         {data.reviews.map((review, index) => {
-          if (index < 3) return <p key={review._id}>{review.snippet}</p>;
+          if (index < 3) return <ReviewCard key={review._id} review={review} />;
         })}
       </ul>
     </Fragment>

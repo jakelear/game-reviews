@@ -1,0 +1,45 @@
+.card {
+  background: #1c1c1c;
+  width: 32%;
+  padding: 40px;
+}
+
+.header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 0 0 40px 0;
+  margin: 0 0 40px 0;
+  h1 {
+    font-weight: 400;
+    font-size: 22px;
+  }
+}
+
+.authors {
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.score {
+  font-size: 18px;
+}
+
+.snippet {
+  opacity: 0.7;
+  min-height: 150px;
+  margin: 20px 0;
+}
+
+.externalLink {
+  -moz-transition: opacity 125ms ease-in-out;
+  -webkit-transition: opacity 125ms ease-in-out;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 20px 0;
+  opacity: 0.7;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 125ms ease-in-out;
+  &:hover {
+    opacity: 1;
+  }
+}

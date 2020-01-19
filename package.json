@@ -8,6 +8,7 @@
     "apollo-boost": "^0.4.7",
     "babel-plugin-transform-function-bind": "^6.22.0",
     "graphql": "^14.5.8",
+    "https": "^1.0.0",
     "postcss": "^7.0.26",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",

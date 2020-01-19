@@ -3,26 +3,14 @@ import { withRouter } from "react-router";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { useParams } from "react-router-dom";
-
+import GAMEQUERY from "../../shared/gamefields";
 import ReviewsPanel from "../ReviewsPanel";
 import styles from "./GamePage.module.scss";
 
 const GAME = gql`
   query Game($id: ID!) {
     game(id: $id) {
-      bannerScreenshot {
-        fullRes
-      }
-      mastheadScreenshot {
-        fullRes
-      }
-      percentRecommended
-      id
-      name
-      Companies {
-        name
-        type
-      }
+      ${GAMEQUERY}
     }
   }
 `;
@@ -57,13 +45,7 @@ function GamePage(props) {
   if (game.loading) return <p>Loading...</p>;
   if (game.error) return <p>Error :(</p>;
 
-  const {
-    name,
-    id,
-    mastheadScreenshot,
-    percentRecommended,
-    Companies
-  } = game.data.game;
+  const { name, mastheadScreenshot, Companies } = game.data.game;
   return (
     <div>
       {mastheadScreenshot && (
@@ -81,7 +63,7 @@ function GamePage(props) {
           }`;
         })}
       </p>
-      <ReviewsPanel id={id} percentRecommended={percentRecommended} />
+      <ReviewsPanel {...game.data.game} />
     </div>
   );
 }
