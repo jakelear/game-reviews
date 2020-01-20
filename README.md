@@ -1,6 +1,10 @@
+![Screenshot of landing page](https://imgur.com/u8tfyr0.jpg)
+
 # Game Storefront with Reviews
 
 In searching for quick side project ideas, I came across Epic Games roadmap for their storefront, and found [this card](https://trello.com/c/T3KOjGRj/152-critic-reviews) in the upcoming lane. This provided a good opportunity for a full stack project, so I buit out a [GraphQL wrapper for OpenCritic's API](https://github.com/jakelear/opencritic-graphql) and then put this little interface, including a game search landing page and a game page that showcases the reviews.
+
+![Screenshot of reviews page](https://i.imgur.com/KjNz2O9.jpg)
 
 ## Setup
 
