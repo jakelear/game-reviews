@@ -55,6 +55,9 @@ function ReviewsPanel(props) {
           if (index < 3) return <ReviewCard key={review._id} review={review} />;
         })}
       </ul>
+      <a className={styles.attribution} href="https://opencritic.com">
+        Reviews provided by OpenCritic
+      </a>
     </Fragment>
   );
 }
